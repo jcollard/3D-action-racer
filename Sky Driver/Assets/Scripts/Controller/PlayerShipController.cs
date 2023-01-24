@@ -11,6 +11,8 @@ public class PlayerShipController : MonoBehaviour
     private LayerMask _platformMask;
     [SerializeField]
     private float _findGroundDistance = 2;
+    [SerializeField]
+    private float _findObstacleDistance = .2f;
     private Rigidbody _rigidBody;
     [SerializeField]
     private float _speed;
@@ -34,19 +36,22 @@ public class PlayerShipController : MonoBehaviour
     [field: SerializeField]
     public UnityEvent OnExplode { get; private set; }
 
+    public bool IsMotionLocked { get; set; } = false;
+
     public bool IsOnGround 
     { 
         get
         {
             RaycastHit hit;
             bool isGroundBelow = Physics.Raycast(transform.position, Vector3.down, out hit, _findGroundDistance, _platformMask);
-            Debug.DrawRay(transform.position, Vector3.down * _findGroundDistance, Color.red, 5);            
+            
             return isGroundBelow;
         }
     }
 
-    public void BodyCollision(Collision other)
+    public void OnNoseCollision(Collision other)
     {
+        Debug.Log("On Nose Collision.");
         if (_speed > _maxSpeed * 0.5f)
         {
             Explode();
@@ -108,12 +113,13 @@ public class PlayerShipController : MonoBehaviour
 
     public void HandleSteeringInput(InputAction.CallbackContext context)
     {
+        if (IsMotionLocked) { return; }        
         _steerDirection = context.ReadValue<float>();
     }
 
     public void HandleJumpInput(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && !IsMotionLocked)
         {
             _isJumping = true;
         }
@@ -136,7 +142,7 @@ public class PlayerShipController : MonoBehaviour
 
     private void Jump()
     {
-        if (!_isJumping) { return; }
+        if (!_isJumping || IsMotionLocked) { return; }
         if (IsOnGround)
         {
             _rigidBody.AddForce(Vector3.up * _jumpPower, ForceMode.Impulse);
@@ -146,10 +152,22 @@ public class PlayerShipController : MonoBehaviour
 
     private void UpdateVelocity()
     {
-        float steeringVelocity = _steeringSpeed * _steerDirection;
+        float steeringVelocity = GetSteeringVelocity();
         float gravityVelocity = _rigidBody.velocity.y;
         float forwardVelocity = _speed;
         _rigidBody.velocity = new(steeringVelocity, gravityVelocity, forwardVelocity);
+    }
+
+    private float GetSteeringVelocity()
+    {
+        float steeringVelocity = _steeringSpeed * _steerDirection;
+        bool isObstacleToSide = Physics.Raycast(transform.position, Vector3.right * _steerDirection,  _findObstacleDistance, _platformMask);
+        if (isObstacleToSide)
+        {
+            _speed = Mathf.Clamp(_speed - (_accelerationSpeed * Time.fixedDeltaTime), 0, _maxSpeed);
+            steeringVelocity = 0;
+        }
+        return steeringVelocity;
     }
 
     private void Accelerate()
@@ -166,10 +184,11 @@ public class PlayerShipController : MonoBehaviour
 
     private void OnCollisionStay(Collision other)
     {
+        if (other.gameObject.CompareTag("NoCollision")) { return; }
         ContactPoint contact = other.GetContact(0);
-        if (contact.thisCollider.gameObject.CompareTag("ShipBody"))
+        if (contact.thisCollider.gameObject.CompareTag("ShipNose"))
         {
-            BodyCollision(other);
+            OnNoseCollision(other);
         }
     }
 }

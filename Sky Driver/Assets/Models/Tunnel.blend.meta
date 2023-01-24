@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 7cfd4337d95f1d54cb1eddb25ae79ac7
+guid: 1d78cf433c0fbcd45a35599d62ef78f2
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: CockpitGlass
-    second: {fileID: 2100000, guid: 4d165e859acb7b04aa6eb91a1a59a01b, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
