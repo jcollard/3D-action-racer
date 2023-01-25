@@ -10,6 +10,10 @@ public class PlayerShipController : MonoBehaviour
     [SerializeField]
     private LayerMask _platformMask;
     [SerializeField]
+    private GameObject _playerModel;
+    [SerializeField]
+    private GameObject _explosion;
+    [SerializeField]
     private float _findGroundDistance = 2;
     [SerializeField]
     private float _findObstacleDistance = .2f;
@@ -32,6 +36,7 @@ public class PlayerShipController : MonoBehaviour
     private bool _isAccelerating;
     private bool _isDecelerating;
     private bool _isJumping;
+    private bool _isExploded;
 
     [field: SerializeField]
     public UnityEvent OnExplode { get; private set; }
@@ -63,12 +68,17 @@ public class PlayerShipController : MonoBehaviour
         transform.position = _startPosition;
         _rigidBody.velocity = Vector3.zero;
         _speed = 0;
-        gameObject.SetActive(true);
+        _isJumping = false;
+        _isAccelerating = false;
+        _isDecelerating = false;
+        _isExploded = false;
+        _playerModel.SetActive(true);
+        _explosion.SetActive(false);
     }
 
     public void ExitLevel()
     {
-        gameObject.SetActive(false);
+        _playerModel.SetActive(false);
     }
 
     protected void Awake()
@@ -132,7 +142,9 @@ public class PlayerShipController : MonoBehaviour
     public void Explode()
     {
         OnExplode.Invoke();
-        gameObject.SetActive(false);
+        _playerModel.SetActive(false);
+        _explosion.SetActive(true);
+        _isExploded = true;
     }
 
     public void Decelerate(float value) => _speed = Mathf.Clamp(_speed - value, 0, _maxSpeed);
@@ -184,6 +196,10 @@ public class PlayerShipController : MonoBehaviour
 
     private void Decelerate()
     {
+        if (_isExploded) 
+        {
+            Decelerate(_accelerationSpeed * 6 * Time.deltaTime);
+        }
         if (!_isDecelerating) { return; }
         Decelerate(_accelerationSpeed * Time.deltaTime);
     }
