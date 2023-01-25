@@ -51,7 +51,6 @@ public class PlayerShipController : MonoBehaviour
 
     public void OnNoseCollision(Collision other)
     {
-        Debug.Log("On Nose Collision.");
         if (_speed > _maxSpeed * 0.5f)
         {
             Explode();
@@ -65,6 +64,11 @@ public class PlayerShipController : MonoBehaviour
         _rigidBody.velocity = Vector3.zero;
         _speed = 0;
         gameObject.SetActive(true);
+    }
+
+    public void ExitLevel()
+    {
+        gameObject.SetActive(false);
     }
 
     protected void Awake()
@@ -125,9 +129,8 @@ public class PlayerShipController : MonoBehaviour
         }
     }
 
-    private void Explode()
+    public void Explode()
     {
-        Debug.Log("Boom");
         OnExplode.Invoke();
         gameObject.SetActive(false);
     }
