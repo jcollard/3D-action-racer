@@ -135,6 +135,9 @@ public class PlayerShipController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void Decelerate(float value) => _speed = Mathf.Clamp(_speed - value, 0, _maxSpeed);
+    public void Accelerate(float value) => _speed = Mathf.Clamp(_speed + value, 0, _maxSpeed);
+
     private void OutOfBoundsCheck()
     {
         if (transform.position.y < -10)
@@ -167,7 +170,7 @@ public class PlayerShipController : MonoBehaviour
         bool isObstacleToSide = Physics.Raycast(transform.position, Vector3.right * _steerDirection,  _findObstacleDistance, _platformMask);
         if (isObstacleToSide)
         {
-            _speed = Mathf.Clamp(_speed - (_accelerationSpeed * Time.fixedDeltaTime), 0, _maxSpeed);
+            Decelerate(_accelerationSpeed * Time.fixedDeltaTime);
             steeringVelocity = 0;
         }
         return steeringVelocity;
@@ -182,7 +185,7 @@ public class PlayerShipController : MonoBehaviour
     private void Decelerate()
     {
         if (!_isDecelerating) { return; }
-        _speed = Mathf.Clamp(_speed - (_accelerationSpeed * Time.deltaTime), 0, _maxSpeed);
+        Decelerate(_accelerationSpeed * Time.deltaTime);
     }
 
     private void OnCollisionStay(Collision other)
