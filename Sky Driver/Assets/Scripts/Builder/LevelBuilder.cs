@@ -1,12 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System;
 
 namespace SkyDriver.Builder
 {
+
+    [Serializable]
     public class LevelBuilder
     {
-        private readonly List<Platform> _platforms;
+        [SerializeField]
+        private List<Platform> _platforms;
 
         public LevelBuilder(List<Platform> platforms)
         {

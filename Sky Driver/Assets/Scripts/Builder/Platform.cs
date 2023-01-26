@@ -1,8 +1,10 @@
 
 using System;
+using UnityEngine;
 
 namespace SkyDriver.Builder
 {
+    [Serializable]
     public class Platform
     {
 
@@ -14,10 +16,14 @@ namespace SkyDriver.Builder
             StartPosition = startPosition;
         }
 
-        public int Column { get; }
-        public int StartPosition { get; }
-        public int Length { get; }
-        public PlatformType Type { get; }
+        [field: SerializeField]
+        public int Column { get; private set; }
+        [field: SerializeField]
+        public int StartPosition { get; private set; }
+        [field: SerializeField]
+        public int Length { get; private set;}
+        [field: SerializeField]
+        public PlatformType Type { get; private set;}
 
         public override bool Equals(object obj)
         {

@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6807183578512142277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1473510609020005511}
+  - component: {fileID: 6065880283000912562}
+  m_Layer: 0
+  m_Name: PlatformDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1473510609020005511
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6807183578512142277}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6065880283000912562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6807183578512142277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 205a54812c9a667499fb8d5cebab8430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Platforms>k__BackingField:
+  - <Type>k__BackingField: 1
+    <PlatformPrefab>k__BackingField: {fileID: 3861636161040724301, guid: 94869049da3ebf84084ebb5040df6de1, type: 3}
+  - <Type>k__BackingField: 2
+    <PlatformPrefab>k__BackingField: {fileID: 2542859827599060527, guid: c8d2eed8e73bd3549a520e40d7be1147, type: 3}
+  - <Type>k__BackingField: 5
+    <PlatformPrefab>k__BackingField: {fileID: 2542859827599060527, guid: ae2bedae66f5714409cb9cabeb0fd813, type: 3}
+  - <Type>k__BackingField: 3
+    <PlatformPrefab>k__BackingField: {fileID: 2542859827599060527, guid: 4691afee72d386d48bd86d0d1f66fc54, type: 3}
+  - <Type>k__BackingField: 6
+    <PlatformPrefab>k__BackingField: {fileID: 6205655591998138952, guid: d52303d308b92b043a57daa4f548485e, type: 3}
+  - <Type>k__BackingField: 4
+    <PlatformPrefab>k__BackingField: {fileID: 6205655591998138952, guid: adc17504cfd526e43beb20923e006903, type: 3}
+  - <Type>k__BackingField: 0
+    <PlatformPrefab>k__BackingField: {fileID: 3861636161040724301, guid: 94869049da3ebf84084ebb5040df6de1, type: 3}
