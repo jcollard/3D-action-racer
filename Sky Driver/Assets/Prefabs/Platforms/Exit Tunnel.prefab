@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6205655591998138952, guid: adc17504cfd526e43beb20923e006903, type: 3}
       propertyPath: m_Name
-      value: Tunnel
+      value: Exit Tunnel
       objectReference: {fileID: 0}
     - target: {fileID: 6725345722507948274, guid: adc17504cfd526e43beb20923e006903, type: 3}
       propertyPath: m_RootOrder

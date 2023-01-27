@@ -14,19 +14,34 @@ namespace SkyDriver.Builder
         private Transform _platformsContainer;
         [SerializeField]
         private string _levelFileName;
+        [SerializeField]
+        private BoxCollider _ground;
 
-        protected void Awake() {
+        protected void Awake()
+        {
             _builder = LevelBuilder.LoadFromFile(_levelFileName);
-            
-            foreach(Transform child in _platformsContainer)
+            ClearPlatforms();
+            BuildPlatforms();
+        }
+
+        private void ClearPlatforms()
+        {
+            foreach (Transform child in _platformsContainer)
             {
                 Destroy(child.gameObject);
             }
+        }
 
-            foreach(Platform p in _builder.Platforms)
+        private void BuildPlatforms()
+        {
+            int maxPosition = 0;
+            foreach (Platform p in _builder.Platforms)
             {
+                maxPosition = Mathf.Max(maxPosition, p.StartPosition + p.Length);
                 PlacePlatform(p);
             }
+            _ground.size = new Vector3(7, 1, maxPosition);
+            _ground.transform.position = new Vector3(3, 0.1f, maxPosition * .5f);
         }
 
         private void PlacePlatform(Platform platform)
@@ -36,6 +51,12 @@ namespace SkyDriver.Builder
             platformGameObject.transform.localScale = new Vector3(1, 1, platform.Length);
             float z = platform.StartPosition + platform.Length * 0.5f;
             platformGameObject.transform.position = new Vector3(platform.Column, 0, z);
+
+            NonePlatformController nonePlatformController = platformGameObject.GetComponent<NonePlatformController>();
+            if (nonePlatformController != null)
+            {
+                nonePlatformController.Ground = _ground;
+            }
         }
     }
 }

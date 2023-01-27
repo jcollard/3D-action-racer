@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2574206176905749588}
   - component: {fileID: 8488248301390317410}
   - component: {fileID: 7577407340545422689}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube
   m_TagString: NoCollision
   m_Icon: {fileID: 0}
@@ -93,11 +93,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634824088126890189}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &7577407340545422689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2542859827599060515}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Boost Platform
   m_TagString: NoCollision
   m_Icon: {fileID: 0}

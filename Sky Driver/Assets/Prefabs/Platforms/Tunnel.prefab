@@ -108,7 +108,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6725345722507948274}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Tunnel
   m_TagString: NoCollision
   m_Icon: {fileID: 0}
@@ -204,20 +204,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Generic
       objectReference: {fileID: 0}
+    - target: {fileID: 3861636161040724301, guid: 94869049da3ebf84084ebb5040df6de1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3861636161040724306, guid: 94869049da3ebf84084ebb5040df6de1, type: 3}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3861636161040724306, guid: 94869049da3ebf84084ebb5040df6de1, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3861636161040724306, guid: 94869049da3ebf84084ebb5040df6de1, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3861636161040724306, guid: 94869049da3ebf84084ebb5040df6de1, type: 3}
-      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3861636161040724306, guid: 94869049da3ebf84084ebb5040df6de1, type: 3}
@@ -260,7 +252,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1258985589595854409, guid: 94869049da3ebf84084ebb5040df6de1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 94869049da3ebf84084ebb5040df6de1, type: 3}
 --- !u!4 &3994577865353082881 stripped
 Transform:
