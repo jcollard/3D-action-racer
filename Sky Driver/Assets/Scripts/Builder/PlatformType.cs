@@ -11,6 +11,7 @@ namespace SkyDriver.Builder
         Tunnel,
         Fire,
         Exit,
+        Wall,
     }
 
     public static class PlatformTypExtensions
@@ -26,6 +27,7 @@ namespace SkyDriver.Builder
                 Tunnel => 'T',
                 Fire => 'F',
                 Exit => 'X',
+                Wall => 'W',
                 _ => throw new System.InvalidOperationException($"Invalid type {type}"),
             };
         }
@@ -41,6 +43,7 @@ namespace SkyDriver.Builder
                 'T' => Tunnel,
                 'F' => Fire,
                 'X' => Exit,
+                'W' => Wall,
                 _ => throw new System.InvalidOperationException($"Invalid character {type}"),
             };
         }
