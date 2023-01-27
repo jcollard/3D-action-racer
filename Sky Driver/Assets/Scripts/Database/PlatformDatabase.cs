@@ -26,14 +26,7 @@ namespace SkyDriver.Builder
             }
         }
 
-        public GameObject GetPlatform(Platform platform, Transform parent)
-        {
-            Entry entry = PlatformLookup[platform.Type];
-            GameObject platformGameObject = Instantiate(entry.PlatformPrefab, parent);
-            platformGameObject.transform.localScale = new Vector3(1, 1, platform.Length);
-            platformGameObject.transform.position = new Vector3(platform.Column, 0, platform.StartPosition);
-            return platformGameObject;
-        }
+        public GameObject GetPlatform(PlatformType type) => PlatformLookup[type].PlatformPrefab;
 
         [Serializable]
         public class Entry
