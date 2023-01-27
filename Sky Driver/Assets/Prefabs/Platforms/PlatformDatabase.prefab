@@ -54,8 +54,8 @@ MonoBehaviour:
   - <Type>k__BackingField: 3
     <PlatformPrefab>k__BackingField: {fileID: 2542859827599060527, guid: 4691afee72d386d48bd86d0d1f66fc54, type: 3}
   - <Type>k__BackingField: 6
-    <PlatformPrefab>k__BackingField: {fileID: 6205655591998138952, guid: d52303d308b92b043a57daa4f548485e, type: 3}
+    <PlatformPrefab>k__BackingField: {fileID: 5805177514257382047, guid: f6296ef6abdfa1b47a2d90987a9792b7, type: 3}
   - <Type>k__BackingField: 4
     <PlatformPrefab>k__BackingField: {fileID: 6205655591998138952, guid: adc17504cfd526e43beb20923e006903, type: 3}
   - <Type>k__BackingField: 0
-    <PlatformPrefab>k__BackingField: {fileID: 3861636161040724301, guid: 94869049da3ebf84084ebb5040df6de1, type: 3}
+    <PlatformPrefab>k__BackingField: {fileID: 3861636161040724301, guid: c33825f3929e3bb46b62c0b534b0d917, type: 3}
