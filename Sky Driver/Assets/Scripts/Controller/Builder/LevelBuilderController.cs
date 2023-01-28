@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using SkyDriver.Level;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SkyDriver.Builder
 {
     public class LevelBuilderController : MonoBehaviour
     {
+        [SerializeField]
+        private GameObject _levelClearedScreen;
+        [SerializeField]
+        private PlayerShipController _player;
         [SerializeField]
         private LevelBuilder _builder;
         [SerializeField]
@@ -17,6 +22,11 @@ namespace SkyDriver.Builder
         private string _levelFileName;
         [SerializeField]
         private BoxCollider _ground;
+
+        public void LevelSelect()
+        {
+            SceneManager.LoadScene("Level Select");
+        }
 
         protected void Awake()
         {
@@ -53,11 +63,17 @@ namespace SkyDriver.Builder
             float z = platform.StartPosition + platform.Length * 0.5f;
             platformGameObject.transform.position = new Vector3(platform.Column, 0, z);
 
-            // NonePlatformController nonePlatformController = platformGameObject.GetComponent<NonePlatformController>();
-            // if (nonePlatformController != null)
-            // {
-            //     nonePlatformController.Ground = _ground;
-            // }
+            ExitTunnelController exitTunnel = platformGameObject.GetComponent<ExitTunnelController>();
+            if (exitTunnel != null)
+            {
+                exitTunnel.OnExitTunnel.AddListener(LevelComplete);
+            }
+        }
+
+        private void LevelComplete()
+        {
+            _player.ExitLevel();
+            _levelClearedScreen.SetActive(true);
         }
     }
 }

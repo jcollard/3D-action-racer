@@ -12,7 +12,6 @@ public class ShipBodyCollider : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Collision");
         OnBodyCollision.Invoke(other);
     }
 

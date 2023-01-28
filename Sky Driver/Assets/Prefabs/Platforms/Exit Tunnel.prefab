@@ -7,6 +7,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3586411812796134799, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586411812796134799, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586411812796134799, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2803015243926257464}
+    - target: {fileID: 3586411812796134799, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586411812796134799, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586411812796134799, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ExitTunnelController, SkyDriver
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586411812796134799, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6205655591998138952, guid: adc17504cfd526e43beb20923e006903, type: 3}
       propertyPath: m_Name
       value: Exit Tunnel
@@ -55,5 +83,85 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7331329657980560444, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7331329657980560444, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7331329657980560444, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2803015243926257464}
+    - target: {fileID: 7331329657980560444, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7331329657980560444, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7331329657980560444, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ExitTunnelController, SkyDriver
+      objectReference: {fileID: 0}
+    - target: {fileID: 7331329657980560444, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7886770960810196631, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8281152094819347101, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8281152094819347101, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8281152094819347101, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2803015243926257464}
+    - target: {fileID: 8281152094819347101, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8281152094819347101, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8281152094819347101, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ExitTunnelController, SkyDriver
+      objectReference: {fileID: 0}
+    - target: {fileID: 8281152094819347101, guid: adc17504cfd526e43beb20923e006903, type: 3}
+      propertyPath: <OnExitTunnel>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adc17504cfd526e43beb20923e006903, type: 3}
+--- !u!1 &5805177514257382047 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6205655591998138952, guid: adc17504cfd526e43beb20923e006903, type: 3}
+  m_PrefabInstance: {fileID: 472535810559856855}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2803015243926257464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805177514257382047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4bc42a66e599604aa5674cc3f3cb0f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <OnExitTunnel>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []

@@ -74,11 +74,13 @@ public class PlayerShipController : MonoBehaviour
         _isExploded = false;
         _playerModel.SetActive(true);
         _explosion.SetActive(false);
+        GetComponent<Rigidbody>().useGravity = true;
     }
 
     public void ExitLevel()
     {
         _playerModel.SetActive(false);
+        GetComponent<Rigidbody>().useGravity = false;
     }
 
     protected void Awake()
