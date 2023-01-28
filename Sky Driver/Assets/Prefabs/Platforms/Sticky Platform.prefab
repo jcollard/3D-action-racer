@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7094465590024628605}
   - component: {fileID: 6444744850929559628}
   - component: {fileID: 1534569232226950339}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sticky Platform
   m_TagString: NoCollision
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1534569232226950339
 MonoBehaviour:
   m_ObjectHideFlags: 0
