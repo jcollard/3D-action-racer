@@ -35,7 +35,7 @@ namespace SkyDriver.Builder
 
         public static LevelBuilder LoadFromString(string text)
         {
-            List<Queue<char>> columnQueues = ParseQueues(text.Split("\n"));
+            List<Queue<char>> columnQueues = ParseQueues(text.Split("\n").Select(t => t.TrimEnd()).ToArray());
             List<Platform> platforms = ParsePlatforms(columnQueues);
             return new LevelBuilder(platforms);
         }

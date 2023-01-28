@@ -44,7 +44,7 @@ namespace SkyDriver.Builder
                 'F' => Fire,
                 'X' => Exit,
                 'W' => Wall,
-                _ => throw new System.InvalidOperationException($"Invalid character {type}"),
+                _ => throw new System.InvalidOperationException($"Invalid character '{type}' as num '{(int)type}'"),
             };
         }
     }
