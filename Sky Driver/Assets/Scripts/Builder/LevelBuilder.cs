@@ -27,12 +27,8 @@ namespace SkyDriver.Builder
             }
         }
 
-        public static LevelBuilder LoadFromFile(string filename)
-        {
-            TextAsset textAsset = Resources.Load<TextAsset>(filename);
-            return LoadFromString(textAsset.text);
-        }
-
+        public static LevelBuilder LoadFromFile(string filename) => LoadFromTextAsset(Resources.Load<TextAsset>(filename));
+        public static LevelBuilder LoadFromTextAsset(TextAsset leveData) => LoadFromString(leveData.text);
         public static LevelBuilder LoadFromString(string text)
         {
             List<Queue<char>> columnQueues = ParseQueues(text.Split("\n").Select(t => t.TrimEnd()).ToArray());

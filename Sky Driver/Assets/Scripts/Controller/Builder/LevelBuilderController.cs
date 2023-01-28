@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using SkyDriver.Level;
 using UnityEngine;
 
 namespace SkyDriver.Builder
@@ -19,7 +20,7 @@ namespace SkyDriver.Builder
 
         protected void Awake()
         {
-            _builder = LevelBuilder.LoadFromFile(_levelFileName);
+            _builder = LevelData.CurrentBuilder;
             ClearPlatforms();
             BuildPlatforms();
         }
@@ -52,11 +53,11 @@ namespace SkyDriver.Builder
             float z = platform.StartPosition + platform.Length * 0.5f;
             platformGameObject.transform.position = new Vector3(platform.Column, 0, z);
 
-            NonePlatformController nonePlatformController = platformGameObject.GetComponent<NonePlatformController>();
-            if (nonePlatformController != null)
-            {
-                nonePlatformController.Ground = _ground;
-            }
+            // NonePlatformController nonePlatformController = platformGameObject.GetComponent<NonePlatformController>();
+            // if (nonePlatformController != null)
+            // {
+            //     nonePlatformController.Ground = _ground;
+            // }
         }
     }
 }

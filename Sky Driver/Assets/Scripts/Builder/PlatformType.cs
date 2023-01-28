@@ -14,8 +14,9 @@ namespace SkyDriver.Builder
         Wall,
     }
 
-    public static class PlatformTypExtensions
+    public static class PlatformTypeExtensions
     {
+
         public static char AsSymbol(this PlatformType type)
         {
             return type switch

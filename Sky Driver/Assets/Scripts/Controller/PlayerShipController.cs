@@ -31,8 +31,8 @@ public class PlayerShipController : MonoBehaviour
     [SerializeField]
     private float _jumpPower = 5f;
 
+    private Collider[] _shipColliders;
     private Vector3 _startPosition;
-
     private bool _isAccelerating;
     private bool _isDecelerating;
     private bool _isJumping;
@@ -85,6 +85,7 @@ public class PlayerShipController : MonoBehaviour
     {
         _startPosition = transform.position;
         _rigidBody = GetComponent<Rigidbody>();
+        _shipColliders = GetComponentsInChildren<Collider>();
         Debug.Assert(_rigidBody != null, "Could not find RigidBody");
     }
 
@@ -93,6 +94,7 @@ public class PlayerShipController : MonoBehaviour
         Accelerate();
         Decelerate();
         OutOfBoundsCheck();
+        CheckForFall();
     }
 
     protected void FixedUpdate()
@@ -149,6 +151,16 @@ public class PlayerShipController : MonoBehaviour
 
     public void Decelerate(float value) => _speed = Mathf.Clamp(_speed - value, 0, _maxSpeed);
     public void Accelerate(float value) => _speed = Mathf.Clamp(_speed + value, 0, _maxSpeed);
+
+    private void CheckForFall()
+    {
+        RaycastHit hit;
+        bool isGroundBelow = Physics.Raycast(transform.position, Vector3.down, out hit, 5f, _platformMask);
+        foreach (Collider collider in _shipColliders)
+        {
+            collider.enabled = isGroundBelow;
+        }
+    }
 
     private void OutOfBoundsCheck()
     {

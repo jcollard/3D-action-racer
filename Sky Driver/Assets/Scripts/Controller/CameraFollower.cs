@@ -12,7 +12,7 @@ public class CameraFollower : MonoBehaviour
     void Update()
     {
         float newZ = _target.position.z - _distance;
-        float x = transform.position.x;
+        float x = _target.position.x; //transform.position.x;
         float y = transform.position.y;
         transform.position = new (x, y, newZ);
     }
