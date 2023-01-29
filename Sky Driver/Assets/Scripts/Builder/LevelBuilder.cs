@@ -70,6 +70,7 @@ namespace SkyDriver.Builder
             {
                 Platform toAdd = ParsePlatform(columnQueue, column, startPosition);
                 startPosition += toAdd.Length;
+                if (toAdd.Type == PlatformType.None) { continue; }
                 platforms.Add(toAdd);
             }
             column++;
