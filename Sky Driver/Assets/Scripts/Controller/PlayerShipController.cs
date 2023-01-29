@@ -36,7 +36,7 @@ public class PlayerShipController : MonoBehaviour
     private Vector3 _startPosition;
     private bool _isAccelerating;
     private bool _isDecelerating;
-    private bool _isJumping;
+    private bool _isJumpQueued;
     private bool _isExploded;
 
     [field: SerializeField]
@@ -77,8 +77,9 @@ public class PlayerShipController : MonoBehaviour
     {
         transform.position = _startPosition;
         _rigidBody.velocity = Vector3.zero;
+        IsMotionLocked = false;
         _speed = 0;
-        _isJumping = false;
+        _isJumpQueued = false;
         _isAccelerating = false;
         _isDecelerating = false;
         _isExploded = false;
@@ -149,7 +150,7 @@ public class PlayerShipController : MonoBehaviour
     {
         if (context.started && !IsMotionLocked)
         {
-            _isJumping = true;
+            _isJumpQueued = true;
         }
     }
 
@@ -166,8 +167,7 @@ public class PlayerShipController : MonoBehaviour
 
     private void CheckForFall()
     {
-        RaycastHit hit;
-        bool isGroundBelow = Physics.Raycast(transform.position, Vector3.down, out hit, 5f, _platformMask);
+        bool isGroundBelow = Physics.Raycast(transform.position, Vector3.down, 10f, _platformMask);
         foreach (Collider collider in _shipColliders)
         {
             collider.enabled = isGroundBelow;
@@ -184,12 +184,15 @@ public class PlayerShipController : MonoBehaviour
 
     private void Jump()
     {
-        if (!_isJumping || IsMotionLocked) { return; }
+        if (!_isJumpQueued || IsMotionLocked) { return; }
         if (IsOnGround)
         {
+            Vector3 velocity = _rigidBody.velocity;
+            velocity.y = 0;
+            _rigidBody.velocity = velocity;
             _rigidBody.AddForce(Vector3.up * _jumpPower, ForceMode.Impulse);
         }
-        _isJumping = false;
+        _isJumpQueued = false;
     }
 
     private void UpdateVelocity()
