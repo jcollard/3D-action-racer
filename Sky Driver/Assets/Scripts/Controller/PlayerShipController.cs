@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -54,11 +55,20 @@ public class PlayerShipController : MonoBehaviour
         }
     }
 
-    public void OnNoseCollision(Collision other)
+    public void CheckCollision()
     {
+        RaycastHit hit;
+        bool isCrashing = Physics.Raycast(transform.position, Vector3.forward, out hit, .6f, _platformMask);
+        if (!isCrashing) { return; }
         if (_speed > _maxSpeed * 0.5f)
         {
             Explode();
+        }
+        if (hit.distance <= 0)
+        {
+            Vector3 toUpdate = transform.position;
+            toUpdate.z -= .25f;
+            transform.position = toUpdate;
         }
         _speed = 0;
     }
@@ -87,7 +97,7 @@ public class PlayerShipController : MonoBehaviour
     {
         _startPosition = transform.position;
         _rigidBody = GetComponent<Rigidbody>();
-        _shipColliders = GetComponentsInChildren<Collider>();
+        _shipColliders = GetComponentsInChildren<Collider>().Where(c => !c.isTrigger).ToArray();
         Debug.Assert(_rigidBody != null, "Could not find RigidBody");
     }
 
@@ -97,6 +107,7 @@ public class PlayerShipController : MonoBehaviour
         Decelerate();
         OutOfBoundsCheck();
         CheckForFall();
+        CheckCollision();
     }
 
     protected void FixedUpdate()
@@ -130,9 +141,8 @@ public class PlayerShipController : MonoBehaviour
     }
 
     public void HandleSteeringInput(InputAction.CallbackContext context)
-    {
-        if (IsMotionLocked) { return; }        
-        _steerDirection = context.ReadValue<float>();
+    {        
+        _steerDirection = IsMotionLocked ? 0 : context.ReadValue<float>();
     }
 
     public void HandleJumpInput(InputAction.CallbackContext context)
@@ -218,13 +228,4 @@ public class PlayerShipController : MonoBehaviour
         Decelerate(_accelerationSpeed * Time.deltaTime);
     }
 
-    private void OnCollisionStay(Collision other)
-    {
-        if (other.gameObject.CompareTag("NoCollision")) { return; }
-        ContactPoint contact = other.GetContact(0);
-        if (contact.thisCollider.gameObject.CompareTag("ShipNose"))
-        {
-            OnNoseCollision(other);
-        }
-    }
 }

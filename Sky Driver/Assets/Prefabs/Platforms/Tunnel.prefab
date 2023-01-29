@@ -144,9 +144,9 @@ GameObject:
   - component: {fileID: 4326409707877847967}
   - component: {fileID: 8175368369667357985}
   - component: {fileID: 3586411812796134799}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: TunnelExitTrigger
-  m_TagString: Untagged
+  m_TagString: NoCollision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -205,9 +205,9 @@ GameObject:
   - component: {fileID: 322234132201657010}
   - component: {fileID: 7886770960810196631}
   - component: {fileID: 7331329657980560444}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: CenterTunnel Collider
-  m_TagString: Untagged
+  m_TagString: NoCollision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
