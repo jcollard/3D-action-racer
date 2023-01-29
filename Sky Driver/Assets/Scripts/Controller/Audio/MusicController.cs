@@ -73,7 +73,9 @@ namespace SkyDriver.Audio
             {
                 s_Instance = this;
                 _playingAudio = gameObject.AddComponent<AudioSource>();
+                _playingAudio.loop = true;
                 _queuedAudio = gameObject.AddComponent<AudioSource>();
+                _queuedAudio.loop = true;
                 _tracks = Resources.Load<MusicTrackDatabase>("Prefabs/MusicTrackDatabase");
                 _playingAudio.loop = true;
                 DontDestroyOnLoad(this);

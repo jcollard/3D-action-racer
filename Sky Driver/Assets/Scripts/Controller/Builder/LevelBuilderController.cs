@@ -32,8 +32,9 @@ namespace SkyDriver.Builder
 
         protected void Awake()
         {
-            MusicController.Instance.StartTrack(2);
+            
             _builder = LevelData.CurrentBuilder;
+            MusicController.Instance.StartTrack(_builder.Track);
             ClearPlatforms();
             BuildPlatforms();
         }

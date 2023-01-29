@@ -43,6 +43,8 @@ public class PlayerShipController : MonoBehaviour
     public UnityEvent OnExplode { get; private set; }
 
     public bool IsMotionLocked { get; set; } = false;
+    
+    public AudioSource BounceSound => GetComponent<AudioSource>();
 
     public bool IsOnGround 
     { 
@@ -191,6 +193,7 @@ public class PlayerShipController : MonoBehaviour
             velocity.y = 0;
             _rigidBody.velocity = velocity;
             _rigidBody.AddForce(Vector3.up * _jumpPower, ForceMode.Impulse);
+            BounceSound.Play();
         }
         _isJumpQueued = false;
     }

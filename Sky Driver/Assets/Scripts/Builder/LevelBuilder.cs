@@ -11,13 +11,16 @@ namespace SkyDriver.Builder
     {
         [SerializeField]
         private List<Platform> _platforms;
+        
 
-        public LevelBuilder(List<Platform> platforms)
+        public LevelBuilder(List<Platform> platforms, int track)
         {
             _platforms = platforms.ToList();
+            Track = track;
         }
 
         public List<Platform> Platforms => _platforms.ToList();
+        public int Track { get; private set; }
 
         public void AddPlatforms(IEnumerable<Platform> platforms)
         {
@@ -31,9 +34,10 @@ namespace SkyDriver.Builder
         public static LevelBuilder LoadFromTextAsset(TextAsset levelData) => LoadFromString(levelData.text);
         public static LevelBuilder LoadFromString(string text)
         {
-            List<Queue<char>> columnQueues = ParseQueues(text.Split("\n").Select(t => t.TrimEnd()).ToArray());
+            string[] data = text.Split("\n").Select(t => t.TrimEnd()).ToArray();
+            List<Queue<char>> columnQueues = ParseQueues(data[1..]);
             List<Platform> platforms = ParsePlatforms(columnQueues);
-            return new LevelBuilder(platforms);
+            return new LevelBuilder(platforms, int.Parse(data[0].Trim()));
         }
 
         public static List<Queue<char>> ParseQueues(string[] levelData)
@@ -89,7 +93,5 @@ namespace SkyDriver.Builder
             PlatformType type = ch.AsPlatformType();
             return new Platform(type, count, column, startPosition);
         }
-
     }
-
 }
