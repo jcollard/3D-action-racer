@@ -8,6 +8,7 @@ namespace SkyDriver.Builder
 {
     public class LevelBuilderController : MonoBehaviour
     {
+        private static float s_zScale = 1.5f;
         [SerializeField]
         private GameObject _levelClearedScreen;
         [SerializeField]
@@ -53,16 +54,17 @@ namespace SkyDriver.Builder
                 maxX = Mathf.Max(maxX, p.Column);
                 PlacePlatform(p);
             }
-            _ground.size = new Vector3((maxX + 1), 1, maxZ);
-            _ground.transform.position = new Vector3(maxX * .5f, 0.1f, maxZ * .5f);
+            _ground.size = new Vector3((maxX + 1), 1, maxZ * s_zScale);
+            _ground.transform.position = new Vector3(maxX * .5f, 0.1f, maxZ * .5f * s_zScale);
         }
 
         private void PlacePlatform(Platform platform)
         {
             GameObject prefab = _platformDatabase.GetPlatform(platform.Type);
             GameObject platformGameObject = Instantiate(prefab, _platformsContainer);
-            platformGameObject.transform.localScale = new Vector3(1, 1, platform.Length);
-            float z = platform.StartPosition + platform.Length * 0.5f;
+
+            platformGameObject.transform.localScale = new Vector3(1, 1, platform.Length * s_zScale);
+            float z = (platform.StartPosition * s_zScale) + platform.Length * 0.5f * s_zScale;
             platformGameObject.transform.position = new Vector3(platform.Column, 0, z);
 
             ExitTunnelController exitTunnel = platformGameObject.GetComponent<ExitTunnelController>();
