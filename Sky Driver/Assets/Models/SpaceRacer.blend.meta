@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: CockpitGlass
-    second: {fileID: 2100000, guid: 4d165e859acb7b04aa6eb91a1a59a01b, type: 2}
+    second: {fileID: 2100000, guid: 08c0a25949aece741bb2bdfb36fc6c7d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
