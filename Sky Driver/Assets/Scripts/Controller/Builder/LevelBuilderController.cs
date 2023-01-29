@@ -45,14 +45,16 @@ namespace SkyDriver.Builder
 
         private void BuildPlatforms()
         {
-            int maxPosition = 0;
+            int maxZ = 0;
+            int maxX = 0;
             foreach (Platform p in _builder.Platforms)
             {
-                maxPosition = Mathf.Max(maxPosition, p.StartPosition + p.Length);
+                maxZ = Mathf.Max(maxZ, p.StartPosition + p.Length);
+                maxX = Mathf.Max(maxX, p.Column);
                 PlacePlatform(p);
             }
-            _ground.size = new Vector3(7, 1, maxPosition);
-            _ground.transform.position = new Vector3(3, 0.1f, maxPosition * .5f);
+            _ground.size = new Vector3((maxX + 1), 1, maxZ);
+            _ground.transform.position = new Vector3(maxX * .5f, 0.1f, maxZ * .5f);
         }
 
         private void PlacePlatform(Platform platform)

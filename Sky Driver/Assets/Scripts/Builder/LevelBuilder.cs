@@ -38,11 +38,12 @@ namespace SkyDriver.Builder
 
         public static List<Queue<char>> ParseQueues(string[] levelData)
         {
-            List<Queue<char>> columnQueues = Enumerable.Range(0, 7).Select(_ => new Queue<char>()).ToList();
+            int maxWidth = levelData.Select(s => s.Length).Max();
+            List<Queue<char>> columnQueues = Enumerable.Range(0, maxWidth).Select(_ => new Queue<char>()).ToList();
             levelData = levelData.Reverse().ToArray();
             for (int row = 0; row < levelData.Length; row++)
             {
-                for (int col = 0; col < 7; col++)
+                for (int col = 0; col < maxWidth; col++)
                 {
                     columnQueues[col].Enqueue(levelData[row].Length <= col ? ' ' : levelData[row][col]);
                 }

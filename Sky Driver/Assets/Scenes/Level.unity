@@ -5437,7 +5437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -12665,6 +12665,7 @@ GameObject:
   - component: {fileID: 1404540755}
   - component: {fileID: 1404540757}
   - component: {fileID: 1404540756}
+  - component: {fileID: 1404540758}
   m_Layer: 7
   m_Name: Image
   m_TagString: Untagged
@@ -12689,8 +12690,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 58, y: -55}
-  m_SizeDelta: {x: 1061.375, y: 1061.375}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 800, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1404540756
 MonoBehaviour:
@@ -12730,6 +12731,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404540754}
   m_CullTransparentMesh: 1
+--- !u!114 &1404540758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404540754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e9695ab48f7f14fbca0715f9ca736c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 2068121638}
 --- !u!1 &1460099562
 GameObject:
   m_ObjectHideFlags: 0
@@ -16262,8 +16276,8 @@ MonoBehaviour:
     m_Bits: 64
   _playerModel: {fileID: 803312903}
   _explosion: {fileID: 893806868}
-  _findGroundDistance: 0.2
-  _findObstacleDistance: 0.2
+  _findGroundDistance: 0.3
+  _findObstacleDistance: 0.3
   _speed: 0
   _steerDirection: 0
   _maxSpeed: 35
