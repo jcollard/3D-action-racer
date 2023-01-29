@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using SkyDriver.Level;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using SkyDriver.Audio;
 
 namespace SkyDriver.Builder
 {
@@ -31,6 +32,7 @@ namespace SkyDriver.Builder
 
         protected void Awake()
         {
+            MusicController.Instance.StartTrack(2);
             _builder = LevelData.CurrentBuilder;
             ClearPlatforms();
             BuildPlatforms();
