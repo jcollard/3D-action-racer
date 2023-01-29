@@ -8,6 +8,7 @@ TagManager:
   - ShipWing
   - NoCollision
   - ShipNose
+  - MusicController
   layers:
   - Default
   - TransparentFX
