@@ -17,7 +17,6 @@ namespace SkyDriver.Audio
                 {
                     GameObject musicController = new GameObject("Music Controller");
                     musicController.AddComponent<MusicController>();
-
                 }
                 return s_Instance;
             }
@@ -25,11 +24,20 @@ namespace SkyDriver.Audio
 
         [SerializeField]
         private MusicTrackDatabase _tracks;
-
         private AudioSource _playingAudio;
         private AudioSource _queuedAudio;
         private float _fadeTime = 0;
         private bool _swapQueued;
+        private float _musicVolume = .25f;
+        public float MusicVolume 
+        { 
+            get => _musicVolume; 
+            set
+            {
+                _musicVolume = Mathf.Clamp(value, 0, 1);
+                _playingAudio.volume = _musicVolume;
+            }
+        }
 
         public void StartTrack(int id)
         {
@@ -51,8 +59,8 @@ namespace SkyDriver.Audio
             if (_fadeTime > 0)
             {
                 _fadeTime -= Time.deltaTime;
-                _playingAudio.volume = _fadeTime;
-                _queuedAudio.volume = 1 - _fadeTime;
+                _playingAudio.volume = _fadeTime * MusicVolume;
+                _queuedAudio.volume = (1 - _fadeTime) * MusicVolume;
             }
             else if (_swapQueued)
             {
@@ -69,22 +77,28 @@ namespace SkyDriver.Audio
 
         protected void Awake()
         {
+            Init();
+            if (this.gameObject != s_Instance.gameObject)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+
+        private void Init()
+        {
             if (s_Instance == null)
             {
                 s_Instance = this;
                 _playingAudio = gameObject.AddComponent<AudioSource>();
+                _playingAudio.volume = MusicVolume;
                 _playingAudio.loop = true;
                 _queuedAudio = gameObject.AddComponent<AudioSource>();
                 _queuedAudio.loop = true;
                 _tracks = Resources.Load<MusicTrackDatabase>("Prefabs/MusicTrackDatabase");
-                _playingAudio.loop = true;
+                VolumeController vc = Resources.Load<VolumeController>("Prefabs/VolumeController");
+                Instantiate(vc, transform);
                 DontDestroyOnLoad(this);
             }
-            else if (this.gameObject != s_Instance.gameObject)
-            {
-                Destroy(this.gameObject);
-            }
-
         }
     }
 }

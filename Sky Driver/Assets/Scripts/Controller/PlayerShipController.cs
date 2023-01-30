@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using SkyDriver.Audio;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -43,8 +44,6 @@ public class PlayerShipController : MonoBehaviour
     public UnityEvent OnExplode { get; private set; }
 
     public bool IsMotionLocked { get; set; } = false;
-    
-    public AudioSource BounceSound => GetComponent<AudioSource>();
 
     public bool IsOnGround 
     { 
@@ -158,10 +157,12 @@ public class PlayerShipController : MonoBehaviour
 
     public void Explode()
     {
+        if (_isExploded) { return; }
         OnExplode.Invoke();
         _playerModel.SetActive(false);
         _explosion.SetActive(true);
         _isExploded = true;
+        SFXController.Play(SFXDatabase.Instance.Explosion);
     }
 
     public void Decelerate(float value) => _speed = Mathf.Clamp(_speed - value, 0, _maxSpeed);
@@ -193,7 +194,7 @@ public class PlayerShipController : MonoBehaviour
             velocity.y = 0;
             _rigidBody.velocity = velocity;
             _rigidBody.AddForce(Vector3.up * _jumpPower, ForceMode.Impulse);
-            BounceSound.Play();
+            SFXController.Play(SFXDatabase.Instance.Bounce);
         }
         _isJumpQueued = false;
     }
